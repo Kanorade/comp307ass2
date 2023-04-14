@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="a2Part1:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8f895bc-9f8f-4171-b426-c926763933a8" name="Changes" comment="" />
+    <list default="true" id="e8f895bc-9f8f-4171-b426-c926763933a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/a2Part1_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/javaSkeleton/penguins307-test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/javaSkeleton/penguins307-train.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/penguins307-test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/penguins307-train.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/pythonSkeleton/NeuralNetwork.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/pythonSkeleton/a2Part1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/pythonSkeleton/penguins307-test.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part1/pythonSkeleton/penguins307-train.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/part2/regression.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NeuralNetwork/LabelEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NeuralNetwork/NeuralNetwork.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NeuralNetwork/Rescaler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NeuralNetwork/Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NeuralNetwork/a2Part1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OMBDcjJjTlmPeyZOtBczeEyosJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -16,9 +45,71 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/kanemich2/IdeaProjects/comp307ass2/out/production/comp307ass2/NeuralNetwork",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/out/production/comp307ass2/NeuralNetwork" />
+      <recent name="$PROJECT_DIR$/out/artifacts/a2Part1_jar" />
+      <recent name="$PROJECT_DIR$/out/production/comp307ass2" />
+      <recent name="$PROJECT_DIR$/Resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/out/production/comp307ass2/NeuralNetwork" />
+      <recent name="$PROJECT_DIR$/src/NeuralNetwork" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JAR Application.a2Part1">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="comp307ass2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="a2Part1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NeuralNetwork.a2Part1" />
+      <module name="comp307ass2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="NeuralNetwork.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="a2Part1" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/a2Part1_jar/a2Part1.jar" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="a2Part1:jar" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.a2Part1" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JAR Application.a2Part1" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.a2Part1" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -27,7 +118,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681360748584</updated>
+      <workItem from="1681361567120" duration="100000" />
+      <workItem from="1681446900153" duration="3500000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

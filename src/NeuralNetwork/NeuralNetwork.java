@@ -25,42 +25,38 @@ public class NeuralNetwork {
 
     //Calculate neuron activation for an input
     public double sigmoid(double input) {
-        double output = 1 / (1 + Math.exp(-input));
-        return output;
+        return 1 / (1 + Math.exp(-input));
     }
 
     //Feed forward pass input to a network output
     public double[][] forward_pass(double[] inputs) {
         double[] hidden_layer_outputs = new double[num_hidden];
-        System.out.println("\nCalculating hidden weights:");
+//        System.out.println("\nCalculating hidden weights:");
         for (int i = 0; i < num_hidden; i++) {
-            // TODO! Calculate the weighted sum, and then compute the final output.
-
             double weighted_sum = 0;
-            System.out.print("Sum for hidden node " + (i+1) + ":");
+//            System.out.print("Sum for hidden node " + (i+1) + ":");
             for (int j = 0; j < num_inputs; j++) {
                 weighted_sum += hidden_layer_weights[j][i] *  inputs[j];
-                System.out.print(" + (" + hidden_layer_weights[j][i] + "*" + inputs[j] + ")");
+//                System.out.print(" + (" + hidden_layer_weights[j][i] + "*" + inputs[j] + ")");
             }
-            System.out.println(" = " + weighted_sum);
+//            System.out.println(" = " + weighted_sum);
             double output = sigmoid(weighted_sum);
-            System.out.println("output: sigmoid(" + weighted_sum + ") = " + output + "\n");
+//            System.out.println("output: sigmoid(" + weighted_sum + ") = " + output + "\n");
             hidden_layer_outputs[i] = output;
         }
 
         double[] output_layer_outputs = new double[num_outputs];
-        System.out.println("\nCalculating output weights:");
+//        System.out.println("\nCalculating output weights:");
         for (int i = 0; i < num_outputs; i++) {
-            // TODO! Calculate the weighted sum, and then compute the final output.
             double weighted_sum = 0;
-            System.out.print("Sum for output node " + (i+1) + ":");
+//            System.out.print("Sum for output node " + (i+1) + ":");
             for (int j = 0; j < num_hidden; j++) {
                 weighted_sum += output_layer_weights[j][i] * hidden_layer_outputs[j];
-                System.out.print(" + (" + output_layer_weights[j][i] + "*" + hidden_layer_outputs[j] + ")");
+//                System.out.print(" + (" + output_layer_weights[j][i] + "*" + hidden_layer_outputs[j] + ")");
             }
-            System.out.println(" = " + weighted_sum);
+//            System.out.println(" = " + weighted_sum);
             double output = sigmoid(weighted_sum);
-            System.out.println("output: sigmoid(" + weighted_sum + ") = " + output + "\n");
+//            System.out.println("output: sigmoid(" + weighted_sum + ") = " + output + "\n");
             output_layer_outputs[i] = output;
         }
         return new double[][]{hidden_layer_outputs, output_layer_outputs};
@@ -124,7 +120,14 @@ public class NeuralNetwork {
         for (int i = 0; i < instances.length; i++) {
             double[] instance = instances[i];
             double[][] outputs = forward_pass(instance);
-            int predicted_class = -1;  // TODO !Should be 0, 1, or 2.
+
+            int predicted_class = 0;  // let's assume class 0 is best and change it if wrong
+            for (int j = 1; j < num_outputs; j++) { // Start j=1, since we're assuming class 0 is best
+                if (outputs[1][j] > outputs[1][predicted_class]) {
+                    predicted_class = j;
+                }
+            }
+
             predictions[i] = predicted_class;
         }
         return predictions;

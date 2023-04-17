@@ -53,10 +53,14 @@ public class NeuralNetwork {
         for (int i = 0; i < num_outputs; i++) {
             // TODO! Calculate the weighted sum, and then compute the final output.
             double weighted_sum = 0;
+            System.out.print("Sum for output node " + (i+1) + ":");
             for (int j = 0; j < num_hidden; j++) {
                 weighted_sum += output_layer_weights[j][i] * hidden_layer_outputs[j];
+                System.out.print(" + (" + output_layer_weights[j][i] + "*" + hidden_layer_outputs[j] + ")");
             }
-            double output = 0;
+            System.out.println(" = " + weighted_sum);
+            double output = sigmoid(weighted_sum);
+            System.out.println("output: sigmoid(" + weighted_sum + ") = " + output + "\n");
             output_layer_outputs[i] = output;
         }
         return new double[][]{hidden_layer_outputs, output_layer_outputs};

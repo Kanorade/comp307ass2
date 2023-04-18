@@ -66,7 +66,6 @@ public class NeuralNetwork {
                                                  double[] output_layer_outputs, int desired_outputs) {
 
         double[] output_layer_betas = new double[num_outputs];
-        // TODO! Calculate output layer betas.
         for (int i = 0; i < num_outputs; i++) {
             int d = (i == desired_outputs) ? 1 : 0;
             output_layer_betas[i] = d - output_layer_outputs[i];
@@ -74,8 +73,17 @@ public class NeuralNetwork {
         System.out.println("OL betas: " + Arrays.toString(output_layer_betas));
 
         double[] hidden_layer_betas = new double[num_hidden];
-        // TODO! Calculate hidden layer betas.
-
+        for (int i = 0; i < num_hidden; i++) {
+            double beta_sum = 0;
+            double[] output_weights_for_hidden_Node = output_layer_weights[i];
+            for (int j = 0; j < num_outputs; j++) {
+            beta_sum += output_weights_for_hidden_Node[j] *
+                    output_layer_outputs[j] *
+                    (1 - output_layer_outputs[j]) *
+                    output_layer_betas[j];
+            }
+            hidden_layer_betas[i] = beta_sum;
+        }
         System.out.println("HL betas: " + Arrays.toString(hidden_layer_betas));
 
         // This is a HxO array (H hidden nodes, O outputs)

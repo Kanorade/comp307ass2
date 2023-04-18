@@ -70,7 +70,7 @@ public class NeuralNetwork {
             int d = (i == desired_outputs) ? 1 : 0;
             output_layer_betas[i] = d - output_layer_outputs[i];
         }
-        System.out.println("OL betas: " + Arrays.toString(output_layer_betas));
+        //System.out.println("OL betas: " + Arrays.toString(output_layer_betas));
 
         double[] hidden_layer_betas = new double[num_hidden];
         for (int i = 0; i < num_hidden; i++) {
@@ -84,7 +84,7 @@ public class NeuralNetwork {
             }
             hidden_layer_betas[i] = beta_sum;
         }
-        System.out.println("HL betas: " + Arrays.toString(hidden_layer_betas));
+        //System.out.println("HL betas: " + Arrays.toString(hidden_layer_betas));
 
         // This is a HxO array (H hidden nodes, O outputs)
         double[][] delta_output_layer_weights = new double[num_hidden][num_outputs];
@@ -111,8 +111,20 @@ public class NeuralNetwork {
 
     public void update_weights(double[][] delta_output_layer_weights, double[][] delta_hidden_layer_weights) {
         // TODO! Update the weights
-        System.out.println("delta_output_layer_weights: \n" + Arrays.deepToString(delta_output_layer_weights));
-        System.out.println("delta_hidden_layer_weights: \n" + Arrays.deepToString(delta_hidden_layer_weights));
+        //System.out.println("delta_output_layer_weights: \n" + Arrays.deepToString(delta_output_layer_weights));
+        //System.out.println("delta_hidden_layer_weights: \n" + Arrays.deepToString(delta_hidden_layer_weights));
+        // Update hidden layer weights
+        for (int i = 0; i < num_inputs; i++) {
+            for (int h = 0; h < num_hidden; h++) {
+                hidden_layer_weights[i][h] += delta_hidden_layer_weights[i][h];
+            }
+        }
+        // Update output layer weights
+        for (int h = 0; h < num_hidden; h++) {
+            for (int o = 0; o < num_outputs; o++) {
+                output_layer_weights[h][o] += delta_output_layer_weights[h][o];
+            }
+        }
     }
 
     public void train(double[][] instances, int[] desired_outputs, int epochs) {

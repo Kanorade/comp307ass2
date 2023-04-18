@@ -89,7 +89,13 @@ public class NeuralNetwork {
         // This is a HxO array (H hidden nodes, O outputs)
         double[][] delta_output_layer_weights = new double[num_hidden][num_outputs];
         // TODO! Calculate output layer weight changes.
-
+        for (int h = 0; h < num_hidden; h++) {
+            for (int o = 0; o < num_outputs; o++) {
+                delta_output_layer_weights[h][o] =
+                        learning_rate * hidden_layer_outputs[h] * output_layer_outputs[o] *
+                                (1 - output_layer_outputs[o]) * output_layer_betas[o];
+            }
+        }
         // This is a IxH array (I inputs, H hidden nodes)
         double[][] delta_hidden_layer_weights = new double[num_inputs][num_hidden];
         // TODO! Calculate hidden layer weight changes.
@@ -100,7 +106,8 @@ public class NeuralNetwork {
 
     public void update_weights(double[][] delta_output_layer_weights, double[][] delta_hidden_layer_weights) {
         // TODO! Update the weights
-        System.out.println("Placeholder");
+        System.out.println("delta_output_layer_weights: \n" + Arrays.deepToString(delta_output_layer_weights));
+        System.out.println("delta_hidden_layer_weights: \n" + Arrays.deepToString(delta_hidden_layer_weights));
     }
 
     public void train(double[][] instances, int[] desired_outputs, int epochs) {

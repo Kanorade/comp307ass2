@@ -34,7 +34,7 @@ public class a2Part1 {
 
         NeuralNetwork nn = new NeuralNetwork(n_in, n_hidden, n_out, initial_hidden_layer_weights, initial_output_layer_weights, learning_rate);
 
-        System.out.printf("First instance has label %s, which is %d as an integer, and %s as a list of outputs.\n",
+        System.out.printf("\nFirst instance has label %s, which is %d as an integer, and %s as a list of outputs.\n",
                 labels[0], integer_encoded[0], Arrays.toString(onehot_encoded[0]));
 
         // need to wrap it into a 2D array
@@ -46,12 +46,20 @@ public class a2Part1 {
         } else {
             instance1_predicted_label = label_encoder.inverse_transform(instance1_prediction[0]);
         }
-        System.out.println("Predicted label for the first instance is: " + instance1_predicted_label);
-
+        System.out.println("\nPredicted label for the first instance is: " + instance1_predicted_label);
+        double[][] outputs = nn.forward_pass(instances[0]);
+        System.out.println("Outputs from first feed forward pass:");
+        System.out.println("Hidden layer outputs: " + Arrays.toString(outputs[0]));
+        System.out.println("Output layer outputs: " + Arrays.toString(outputs[1]));
         // TODO: Perform a single backpropagation pass using the first instance only. (In other words, train with 1
         //  instance for 1 epoch!). Hint: you will need to first get the weights from a forward pass.
 
-        System.out.println("Weights after performing BP for first instance only:");
+        System.out.println("\nWeights after performing BP for first instance only:");
+
+        double[][][] delta_weights = nn.backward_propagate_error(
+                instances[0], outputs[0], outputs[1], integer_encoded[0]);
+        nn.update_weights(delta_weights[0], delta_weights[1]);
+
         System.out.println("Hidden layer weights:\n" + Arrays.deepToString(nn.hidden_layer_weights));
         System.out.println("Output layer weights:\n" + Arrays.deepToString(nn.output_layer_weights));
 

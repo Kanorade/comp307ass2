@@ -72,15 +72,25 @@ public class a2Part1 {
         System.out.println("Hidden layer weights:\n" + Arrays.deepToString(nn.hidden_layer_weights));
         System.out.println("Output layer weights:\n" + Arrays.deepToString(nn.output_layer_weights));
 
+        System.out.println("\nReading test file...");
         List<String[]> lines_test = Util.getLines("penguins307-test.csv");
         String[] header_test = lines_test.remove(0);
+        System.out.println("Header Check: " + Arrays.toString(header_test));
         String[] labels_test = Util.getLabels(lines_test);
         double[][] instances_test = Util.getData(lines_test);
+        System.out.println("Done!");
 
         // scale the test according to our training data.
         rescaler.rescaleData(instances_test);
 
         // TODO: Compute and print the test accuracy
+        System.out.println("\nMaking predictions using test file:");
+        int[] predictions = nn.predict(instances_test);
+        System.out.println("Predicted Outputs: \n" + Arrays.toString(predictions));
+        int[] expectedOutputs = label_encoder.intEncode(labels_test);
+        System.out.println("Expected Outputs: \n" + Arrays.toString(expectedOutputs));
+
+        // Calculate Accuracy next
         System.out.println("Finished!");
     }
 

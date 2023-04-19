@@ -110,7 +110,6 @@ public class NeuralNetwork {
     }
 
     public void update_weights(double[][] delta_output_layer_weights, double[][] delta_hidden_layer_weights) {
-        // TODO! Update the weights
         //System.out.println("delta_output_layer_weights: \n" + Arrays.deepToString(delta_output_layer_weights));
         //System.out.println("delta_hidden_layer_weights: \n" + Arrays.deepToString(delta_hidden_layer_weights));
         // Update hidden layer weights
@@ -135,7 +134,7 @@ public class NeuralNetwork {
                 double[] instance = instances[i];
                 double[][] outputs = forward_pass(instance);
                 double[][][] delta_weights = backward_propagate_error(instance, outputs[0], outputs[1], desired_outputs[i]);
-                int predicted_class = -1; // TODO!
+                int predicted_class = predictedClassIntFromOutputs(outputs);
                 predictions[i] = predicted_class;
 
                 //We use online learning, i.e. update the weights after every instance.
@@ -146,8 +145,15 @@ public class NeuralNetwork {
             System.out.println("Hidden layer weights \n" + Arrays.deepToString(hidden_layer_weights));
             System.out.println("Output layer weights  \n" + Arrays.deepToString(output_layer_weights));
 
-            // TODO: Print accuracy achieved over this epoch
             double acc = Double.NaN;
+            int successCount = 0;
+            assert(instances.length == desired_outputs.length);
+            for (int i = 0; i < predictions.length; i++) {
+                if (predictions[i] == desired_outputs[i]) {
+                    successCount++;
+                }
+            }
+            acc = (double)successCount/predictions.length;
             System.out.println("acc = " + acc);
         }
     }
@@ -158,16 +164,20 @@ public class NeuralNetwork {
             double[] instance = instances[i];
             double[][] outputs = forward_pass(instance);
 
-            int predicted_class = 0;  // let's assume class 0 is best and change it if wrong
-            for (int j = 1; j < num_outputs; j++) { // Start j=1, since we're assuming class 0 is best
-                if (outputs[1][j] > outputs[1][predicted_class]) {
-                    predicted_class = j;
-                }
-            }
+            int predicted_class = predictedClassIntFromOutputs(outputs);
 
             predictions[i] = predicted_class;
         }
         return predictions;
+    }
+    public int predictedClassIntFromOutputs(double[][] outputs) {
+        int predicted_class = 0;  // let's assume class 0 is best and change it if wrong
+        for (int j = 1; j < num_outputs; j++) { // Start j=1, since we're assuming class 0 is best
+            if (outputs[1][j] > outputs[1][predicted_class]) {
+                predicted_class = j;
+            }
+        }
+        return predicted_class;
     }
 
 }

@@ -51,8 +51,6 @@ public class a2Part1 {
         System.out.println("Outputs from first feed forward pass:");
         System.out.println("Hidden layer outputs: " + Arrays.toString(outputs[0]));
         System.out.println("Output layer outputs: " + Arrays.toString(outputs[1]));
-        // TODO: Perform a single backpropagation pass using the first instance only. (In other words, train with 1
-        //  instance for 1 epoch!). Hint: you will need to first get the weights from a forward pass.
 
         System.out.println("\nWeights after performing BP for first instance only:");
 
@@ -60,6 +58,11 @@ public class a2Part1 {
                 instances[0], outputs[0], outputs[1], integer_encoded[0]);
         nn.update_weights(delta_weights[0], delta_weights[1]);
 
+        // alternative approach
+//        double[][] oneInstance = {instances[0]};
+//        nn.train(oneInstance,integer_encoded, 1);
+
+        /* Commenting out since train method prints weights anyway */
         System.out.println("Hidden layer weights:\n" + Arrays.deepToString(nn.hidden_layer_weights));
         System.out.println("Output layer weights:\n" + Arrays.deepToString(nn.output_layer_weights));
 

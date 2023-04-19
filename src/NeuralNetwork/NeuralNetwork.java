@@ -145,7 +145,6 @@ public class NeuralNetwork {
             System.out.println("Hidden layer weights \n" + Arrays.deepToString(hidden_layer_weights));
             System.out.println("Output layer weights  \n" + Arrays.deepToString(output_layer_weights));
 
-            double acc = Double.NaN;
             int successCount = 0;
             assert(instances.length == desired_outputs.length);
             for (int i = 0; i < predictions.length; i++) {
@@ -153,7 +152,7 @@ public class NeuralNetwork {
                     successCount++;
                 }
             }
-            acc = (double)successCount/predictions.length;
+            double acc = (double)successCount/predictions.length;
             System.out.println("acc = " + acc);
         }
     }

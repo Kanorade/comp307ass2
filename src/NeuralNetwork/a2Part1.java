@@ -90,8 +90,16 @@ public class a2Part1 {
         int[] expectedOutputs = label_encoder.intEncode(labels_test);
         System.out.println("Expected Outputs: \n" + Arrays.toString(expectedOutputs));
 
-        // Calculate Accuracy next
-        System.out.println("Finished!");
+        // Calculate Accuracy
+        int successCount = 0;
+        for (int i = 0; i < predictions.length; i++) {
+            if (predictions[i] == expectedOutputs[i]) {
+                successCount++;
+            }
+        }
+        double accuracy = (double)successCount/predictions.length;
+        System.out.println("Accuracy: " + accuracy);
+        System.out.println("\nFinished!");
     }
 
 }

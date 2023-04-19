@@ -128,7 +128,7 @@ public class NeuralNetwork {
 
     public void train(double[][] instances, int[] desired_outputs, int epochs) {
         for (int epoch = 0; epoch < epochs; epoch++) {
-            System.out.println("epoch = " + epoch);
+            System.out.println("\nepoch = " + epoch);
             int[] predictions = new int[instances.length];
             for (int i = 0; i < instances.length; i++) {
                 double[] instance = instances[i];

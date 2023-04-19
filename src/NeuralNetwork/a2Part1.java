@@ -8,6 +8,7 @@ public class a2Part1 {
     public static void main(String[] _ignored) {
         List<String[]> lines = Util.getLines("penguins307-train.csv");
         String[] header = lines.remove(0);
+        System.out.println("Headers: " + Arrays.toString(header));
         String[] labels = Util.getLabels(lines);
         double[][] instances = Util.getData(lines);
 
@@ -66,7 +67,7 @@ public class a2Part1 {
         System.out.println("Hidden layer weights:\n" + Arrays.deepToString(nn.hidden_layer_weights));
         System.out.println("Output layer weights:\n" + Arrays.deepToString(nn.output_layer_weights));
 
-        // TODO: Train for 100 epochs, on all instances.
+        nn.train(instances, integer_encoded, 100);
         System.out.println("\nAfter training:");
         System.out.println("Hidden layer weights:\n" + Arrays.deepToString(nn.hidden_layer_weights));
         System.out.println("Output layer weights:\n" + Arrays.deepToString(nn.output_layer_weights));

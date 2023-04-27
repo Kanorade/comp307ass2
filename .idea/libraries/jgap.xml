@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="jgap">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full/jgap.jar!/" />
+      <root url="file://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="file://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full/doc" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full/examples/src" />
+      <root url="file://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full/examples/test" />
+      <root url="file://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full/src" />
+      <root url="file://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full/tests" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/Resources/part2/jgap_3.6.3_full" recursive="false" />
+  </library>
+</component>

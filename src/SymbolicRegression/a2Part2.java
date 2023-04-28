@@ -15,14 +15,14 @@ import org.jgap.gp.impl.GPGenotype;
 import org.jgap.gp.terminal.Terminal;
 import org.jgap.gp.terminal.Variable;
 
-public class SymReg extends GPProblem {
+public class a2Part2 extends GPProblem {
     private static double[] X_INPUTS = {-2.00 , -1.75, -1.50, -1.25, -1.00, -0.75, -0.50, -0.25,
             0.00, 0.25, 0.50, 0.75, 1.00, 1.25, 1.50, 1.75, 2.00, 2.25, 2.50, 2.75};
     private static double[] Y_OUTPUTS = {37.00000, 24.16016, 15.06250, 8.91016, 5.00000,
             2.72266, 1.56250, 1.09766, 1.00000, 1.03516, 1.06250, 1.03516, 1.00000,
             1.09766, 1.56250, 2.72266, 5.00000, 8.91016, 15.06250, 24.16016};
     private Variable xVar;
-    public SymReg() throws InvalidConfigurationException {
+    public a2Part2() throws InvalidConfigurationException {
         super (new GPConfiguration());
             GPConfiguration config = getGPConfiguration();
 
@@ -88,7 +88,7 @@ public class SymReg extends GPProblem {
         }
     }
     public static void main(String[] args) throws InvalidConfigurationException {
-        GPProblem problem = new SymReg();
+        GPProblem problem = new a2Part2();
 
         GPGenotype gp = problem.create();
         gp.setVerboseOutput(true);

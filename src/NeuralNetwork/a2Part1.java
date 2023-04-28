@@ -59,7 +59,7 @@ public class a2Part1 {
 
         double[][][] delta_weights = nn.backward_propagate_error(
                 instances[0], outputs[0], outputs[1], integer_encoded[0]);
-        nn.update_weights(delta_weights[0], delta_weights[1]);
+        nn.update_weights(delta_weights[0], delta_weights[1], delta_weights[2]);
 
         // alternative approach
 //        double[][] oneInstance = {instances[0]};
@@ -85,7 +85,6 @@ public class a2Part1 {
         // scale the test according to our training data.
         rescaler.rescaleData(instances_test);
 
-        // TODO: Compute and print the test accuracy
         System.out.println("\nMaking predictions using test file:");
         int[] predictions = nn.predict(instances_test);
         System.out.println("Predicted Outputs: \n" + Arrays.toString(predictions));

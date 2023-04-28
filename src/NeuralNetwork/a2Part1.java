@@ -32,8 +32,10 @@ public class a2Part1 {
         double[][] initial_hidden_layer_weights =
                 new double[][]{{-0.28, -0.22}, {0.08, 0.20}, {-0.30, 0.32}, {0.10, 0.01}};
         double[][] initial_output_layer_weights = new double[][]{{-0.29, 0.03, 0.21}, {0.08, 0.13, -0.36}};
+        double[] biases = new double[]{-0.02, -0.20, -0.33, 0.26, 0.06};
 
-        NeuralNetwork nn = new NeuralNetwork(n_in, n_hidden, n_out, initial_hidden_layer_weights, initial_output_layer_weights, learning_rate);
+        NeuralNetwork nn = new NeuralNetwork(n_in, n_hidden, n_out, initial_hidden_layer_weights,
+                initial_output_layer_weights, learning_rate, biases);
 
         System.out.printf("\nFirst instance has label %s, which is %d as an integer, and %s as a list of outputs.\n",
                 labels[0], integer_encoded[0], Arrays.toString(onehot_encoded[0]));

@@ -5,12 +5,15 @@ import java.util.Arrays;
 public class NeuralNetwork {
     public final double[][] hidden_layer_weights;
     public final double[][] output_layer_weights;
+    public final double[] biases;
     private final int num_inputs;
     private final int num_hidden;
     private final int num_outputs;
     private final double learning_rate;
 
-    public NeuralNetwork(int num_inputs, int num_hidden, int num_outputs, double[][] initial_hidden_layer_weights, double[][] initial_output_layer_weights, double learning_rate) {
+    public NeuralNetwork(int num_inputs, int num_hidden, int num_outputs, double[][] initial_hidden_layer_weights,
+                         double[][] initial_output_layer_weights, double learning_rate,
+                         double[] biases) {
         //Initialise the network
         this.num_inputs = num_inputs;
         this.num_hidden = num_hidden;
@@ -18,6 +21,7 @@ public class NeuralNetwork {
 
         this.hidden_layer_weights = initial_hidden_layer_weights;
         this.output_layer_weights = initial_output_layer_weights;
+        this.biases = biases;
 
         this.learning_rate = learning_rate;
     }

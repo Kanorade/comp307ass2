@@ -5,6 +5,16 @@ Other assignments for the course can be found here:
 - [Assignment 1](https://github.com/Kanorade/AI-Ass1-Basic-ML-Algorithms)
 
 --- 
+This assignment is broken into 2 parts: 
+1. Part One: Neural Networks
+2. Part Two: Genetic Programming (source code is on a seperate branch, may fix it later)
+
+A summary of the each part and the problem its trying to solve is described below.
+
+A detailed description of the results of the assignment can be found in "Assignment 2.pdf"
+
+---
+
 The code can be run by downloading the submission.zip file and extracting it. The Assignment is split into seperate directories, 
 parts one and two. For each directory there is:
 - a runnable jar file
@@ -31,3 +41,36 @@ flipper length (mm) and body mass (g).
 
 ### Output:
 It will display the weights of the neural network for the first 100 iterations with the traning data; or earlier if a conversion has occured. It will then test the accuracy of the NN model using the test file provided.
+
+## Part 2: Genetic Programming for Symbolic Regression
+Using genetic programing to evolve a mathematical function.
+### Dataset
+The goal is to use to GP to discover a mathematical function most closely match the provides (x,y) coordinates provided in regression.txt found in the Resources directory.
+
+Coordinates provided in regression.txt:
+| x | y |
+| ----------- | ----------- |
+| -2.00 | 37.00000|
+| -1.75 | 24.16016|
+| -1.50 | 15.06250|
+| -1.25 | 8.91016|
+| -1.00 | 5.00000|
+| -0.75 | 2.72266|
+| -0.50 | 1.56250|
+| -0.25 | 1.09766|
+|  0.00 | 1.00000|
+|  0.25 | 1.03516|
+|  0.50 | 1.06250|
+|  0.75 | 1.03516|
+|  1.00 | 1.00000|
+|  1.25 | 1.09766|
+|  1.50 | 1.56250|
+|  1.75 | 2.72266|
+|  2.00 | 5.00000|
+|  2.25 | 8.91016|
+|  2.50 | 15.06250|
+|  2.75 | 24.16016|
+
+### Output
+A series of log4j reports.
+Displays the most suitable mathematical function of each generation that best fits the y values at a given x. The program stops when the "fitness" is very close to zero

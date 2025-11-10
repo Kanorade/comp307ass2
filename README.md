@@ -7,7 +7,7 @@ Other assignments for the course can be found here:
 --- 
 This assignment is broken into 2 parts: 
 1. Part One: Neural Networks
-2. Part Two: Genetic Programming (source code is on a seperate branch, may fix it later)
+2. Part Two: Genetic Programming 
 
 A summary of the each part and the problem its trying to solve is described below.
 
@@ -25,7 +25,7 @@ All of Part One (Neural Network) was written from scratch for learning purposes,
 consuming it would be to write Genetic Programming code from scratch, the Java package JGAP was used to implement sympolic regression 
 for Part Two.
 ## Part 1: Classifying Pingu with a Neural Network
-Implementing a simple neural network to classify penguins.
+Implementing a simple Neural Network (NN) to classify penguins.
 ### Training and Test Data
 As described in the assignment description:
 
@@ -43,7 +43,7 @@ flipper length (mm) and body mass (g).
 It will display the weights of the neural network for the first 100 iterations with the traning data; or earlier if a conversion has occured. It will then test the accuracy of the NN model using the test file provided.
 
 ## Part 2: Genetic Programming for Symbolic Regression
-Using genetic programing to evolve a mathematical function.
+Using Genetic Programing (GP) to evolve a mathematical function.
 ### Dataset
 The goal is to use to GP to discover a mathematical function most closely match the provides (x,y) coordinates provided in regression.txt found in the Resources directory.
 

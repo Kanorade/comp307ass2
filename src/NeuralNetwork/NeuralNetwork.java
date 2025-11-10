@@ -5,12 +5,15 @@ import java.util.Arrays;
 public class NeuralNetwork {
     public final double[][] hidden_layer_weights;
     public final double[][] output_layer_weights;
+    public final double[] biases;
     private final int num_inputs;
     private final int num_hidden;
     private final int num_outputs;
     private final double learning_rate;
 
-    public NeuralNetwork(int num_inputs, int num_hidden, int num_outputs, double[][] initial_hidden_layer_weights, double[][] initial_output_layer_weights, double learning_rate) {
+    public NeuralNetwork(int num_inputs, int num_hidden, int num_outputs, double[][] initial_hidden_layer_weights,
+                         double[][] initial_output_layer_weights, double learning_rate,
+                         double[] biases) {
         //Initialise the network
         this.num_inputs = num_inputs;
         this.num_hidden = num_hidden;
@@ -18,8 +21,10 @@ public class NeuralNetwork {
 
         this.hidden_layer_weights = initial_hidden_layer_weights;
         this.output_layer_weights = initial_output_layer_weights;
+        this.biases = biases;
 
         this.learning_rate = learning_rate;
+
     }
 
 
@@ -40,6 +45,10 @@ public class NeuralNetwork {
 //                System.out.print(" + (" + hidden_layer_weights[j][i] + "*" + inputs[j] + ")");
             }
 //            System.out.println(" = " + weighted_sum);
+
+            // add bias
+            weighted_sum += biases[i];
+
             double output = sigmoid(weighted_sum);
 //            System.out.println("output: sigmoid(" + weighted_sum + ") = " + output + "\n");
             hidden_layer_outputs[i] = output;
@@ -55,6 +64,10 @@ public class NeuralNetwork {
 //                System.out.print(" + (" + output_layer_weights[j][i] + "*" + hidden_layer_outputs[j] + ")");
             }
 //            System.out.println(" = " + weighted_sum);
+
+            // Add bias
+            weighted_sum += biases[i + num_hidden];
+
             double output = sigmoid(weighted_sum);
 //            System.out.println("output: sigmoid(" + weighted_sum + ") = " + output + "\n");
             output_layer_outputs[i] = output;
@@ -105,11 +118,24 @@ public class NeuralNetwork {
             }
         }
 
+        // Calculate change in bias weights, is a 2d for compatibility reasons
+        double [][] delta_biases = new double[1][num_hidden+num_outputs];
+        for (int i = 0; i < num_hidden; i++) {
+            delta_biases[0][i] = learning_rate*hidden_layer_outputs[i]*
+                    (1-hidden_layer_outputs[i])*hidden_layer_betas[i];
+        }
+
+        for (int i = 0; i < num_outputs; i++) {
+            delta_biases[0][num_hidden+i] = learning_rate*output_layer_outputs[i]*
+                    (1-output_layer_outputs[i])*output_layer_betas[i];
+        }
+
         // Return the weights we calculated, so they can be used to update all the weights.
-        return new double[][][]{delta_output_layer_weights, delta_hidden_layer_weights};
+        return new double[][][]{delta_output_layer_weights, delta_hidden_layer_weights, delta_biases};
     }
 
-    public void update_weights(double[][] delta_output_layer_weights, double[][] delta_hidden_layer_weights) {
+    public void update_weights(double[][] delta_output_layer_weights, double[][] delta_hidden_layer_weights,
+                               double[][] delta_biases) {
         //System.out.println("delta_output_layer_weights: \n" + Arrays.deepToString(delta_output_layer_weights));
         //System.out.println("delta_hidden_layer_weights: \n" + Arrays.deepToString(delta_hidden_layer_weights));
         // Update hidden layer weights
@@ -123,6 +149,11 @@ public class NeuralNetwork {
             for (int o = 0; o < num_outputs; o++) {
                 output_layer_weights[h][o] += delta_output_layer_weights[h][o];
             }
+        }
+
+        // Update bias weights
+        for (int i = 0; i < (num_hidden + num_outputs); i++) {
+            biases[i] += delta_biases[0][i];
         }
     }
 
@@ -138,7 +169,7 @@ public class NeuralNetwork {
                 predictions[i] = predicted_class;
 
                 //We use online learning, i.e. update the weights after every instance.
-                update_weights(delta_weights[0], delta_weights[1]);
+                update_weights(delta_weights[0], delta_weights[1], delta_weights[2]);
             }
 
             // Print new weights

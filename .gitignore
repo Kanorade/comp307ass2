@@ -28,3 +28,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### External Libraries (for now) ###
+/Resources/part2/jgap_3.6.3_full/
+/log4j_jgap.log
